@@ -2,7 +2,7 @@ const Symptom = require('../models/symptom');
 
 exports.createSymptom = async (req, res) => { 
     try {
-        const { symptomName , img , discription } = req.body;
+        const { symptomName , imageUrl , discription } = req.body;
         const symptom = await Symptom.findOne({ symptomName });
         if (symptom) {
             return res.json({
@@ -12,7 +12,7 @@ exports.createSymptom = async (req, res) => {
         try {
             const sym = await new Symptom({
                 symptomName,
-                img,
+                imageUrl,
                 discription,
             }).save(); 
         }
@@ -22,7 +22,7 @@ exports.createSymptom = async (req, res) => {
 
         res.json({
             symptomName,
-            img,
+            imageUrl,
             discription,
         });
     } catch (err) {
@@ -30,4 +30,40 @@ exports.createSymptom = async (req, res) => {
         return res.status(400).send("Error. Try again.");
     }
 
+}
+
+exports.readSymptom = async (req, res) => { 
+    try {
+       
+        const symptom = await Symptom.find();
+        if (!symptom) {
+            return res.json({
+                error: "No symptom found",
+            });
+        }
+        res.json({
+            symptom,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(400).send("Error. Try again.");
+    }
+}
+
+exports.readBodyTypeById = async (req, res) => { 
+    try {
+        const { id } = req.body;
+        const symptom = await Symptom.find({ id });
+        if (!symptom) {
+            return res.json({
+                error: "No symptom found",
+            });
+        }
+        res.json({
+            symptom
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(400).send("Error. Try again.");
+    }
 }

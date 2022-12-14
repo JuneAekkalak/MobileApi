@@ -7,11 +7,12 @@ const userSchema = new Schema(
       trim: true,
       required: true,
     },
-    img  : {
+    imageUrl : {
       type: String,
       trim: true,
       required: true,
     },
+
     discription  : {
         type: String,
         trim: true,

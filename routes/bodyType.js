@@ -12,6 +12,8 @@ router.get("/", (req,res) => {
     });
 });
 
-router.post("/type", bodyTypeController.createType);
+router.post("/crateType", bodyTypeController.createType);
+router.get("/getType", bodyTypeController.readBodyType); 
+router.get("/getTypeById/:id", bodyTypeController.readBodyTypeById);
 
 module.exports = router;

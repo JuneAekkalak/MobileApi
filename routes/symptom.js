@@ -13,5 +13,7 @@ router.get("/", (req,res) => {
 });
 
 router.post("/createSymtom", symtomController.createSymptom);
+router.get("/getSymptom", symtomController.readSymptom);
+router.get("/getSymptomById/:id", symtomController.readBodyTypeById);
 
 module.exports = router;

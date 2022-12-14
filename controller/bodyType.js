@@ -27,5 +27,40 @@ exports.createType = async (req, res) => {
         console.log(err);
         return res.status(400).send("Error. Try again.");
     }
+}
 
+exports.readBodyType = async (req, res) => { 
+    try {
+       
+        const bodytype = await BodyType.find();
+        if (!bodytype) {
+            return res.json({
+                error: "No bodytype found",
+            });
+        }
+        res.json({
+            bodytype,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(400).send("Error. Try again.");
+    }
+}
+
+exports.readBodyTypeById = async (req, res) => { 
+    try {
+        const { id } = req.body;
+        const bodytype = await BodyType.find({ id });
+        if (!bodytype) {
+            return res.json({
+                error: "No bodytype found",
+            });
+        }
+        res.json({
+            bodytype,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(400).send("Error. Try again.");
+    }
 }
