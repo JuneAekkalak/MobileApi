@@ -50,7 +50,7 @@ exports.readSymptom = async (req, res) => {
     }
 }
 
-exports.readBodyTypeById = async (req, res) => { 
+exports.readSymptomById = async (req, res) => { 
     try {
         const { id } = req.body;
         const symptom = await Symptom.find({ id });
