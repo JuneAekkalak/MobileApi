@@ -4,6 +4,8 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 
 const authRoutes = require('./routes/auth');
+const bodyRoutes = require('./routes/bodyType');
+const symptomRoutes = require('./routes/symptom');
 
 
 const morgan = require("morgan");
@@ -23,8 +25,9 @@ app.use(express.json());
 
 
 
-app.use("/api",authRoutes);
-// app.use('/api', authRoutes);
+app.use("/api/auth/",authRoutes);
+app.use('/api/body/', bodyRoutes);
+app.use('/api/symptom/', symptomRoutes);
 
 app.listen(8000, () => {
     console.log(`Example app listening at http://localhost:8000`)

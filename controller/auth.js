@@ -99,7 +99,8 @@ exports.signin = async (req, res) => {
 exports.findUser = async (req, res) => {
     try {
        
-        const user = await User.find();
+        const user = await User.find({name:'saran2'});
+        // const users = user.db('test').colection('users').find({name:'saran2'});
         if (!user) {
             return res.json({
                 error: "No user found",

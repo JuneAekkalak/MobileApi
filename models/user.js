@@ -19,15 +19,10 @@ const userSchema = new Schema(
       min: 6,
       max: 64,
     },
-    // role: {
-    //   type: String,
-    //   default: "Subscriber",
-    // },
-    // image: {
-    //   public_id: "",
-    //   url: "",
-    // },
-    // resetCode: "",
+    image: {
+      public_id: "",
+      url: "",
+    },
   },
   { timestamps: true }
 );
